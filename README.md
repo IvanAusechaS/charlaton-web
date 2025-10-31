@@ -52,6 +52,7 @@ Similar to Google Meet but with enhanced accessibility features and integrated A
 ## ✨ Features
 
 ### Sprint 1: Foundation & Authentication
+
 - ✅ User registration and login
 - ✅ JWT-based authentication
 - ✅ Password reset functionality
@@ -59,6 +60,7 @@ Similar to Google Meet but with enhanced accessibility features and integrated A
 - ✅ Protected routes and authorization
 
 ### Sprint 2: Core Video Conferencing
+
 - 🎥 Real-time video and audio streaming (WebRTC)
 - 📅 Meeting creation and scheduling
 - 🔗 Shareable meeting links
@@ -66,6 +68,7 @@ Similar to Google Meet but with enhanced accessibility features and integrated A
 - 🖥️ Screen sharing capabilities
 
 ### Sprint 3: Enhanced Communication
+
 - 💬 Real-time chat messaging
 - 🎤 Microphone mute/unmute controls
 - 📹 Camera on/off controls
@@ -73,6 +76,7 @@ Similar to Google Meet but with enhanced accessibility features and integrated A
 - 😊 Emoji reactions
 
 ### Sprint 4: AI Integration
+
 - 🤖 AI-generated meeting summaries
 - 📝 Automatic transcription
 - 🎯 Key points extraction
@@ -84,6 +88,7 @@ Similar to Google Meet but with enhanced accessibility features and integrated A
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **Framework**: React 18 with TypeScript
 - **Build Tool**: Vite.js (Fast HMR and optimized builds)
 - **Styling**: SASS/SCSS with CSS Modules
@@ -91,16 +96,19 @@ Similar to Google Meet but with enhanced accessibility features and integrated A
 - **State Management**: React Context API + Custom Hooks
 
 ### Real-time Communication
+
 - **WebRTC**: Peer-to-peer video/audio
 - **WebSocket**: Real-time messaging (Socket.io)
 - **MediaStream API**: Camera and microphone access
 
 ### API Integration
+
 - **HTTP Client**: Native Fetch API
 - **Methods**: GET, POST, PUT, DELETE
 - **Authentication**: JWT Bearer tokens
 
 ### Development Tools
+
 - **Linting**: ESLint + TypeScript ESLint
 - **Formatting**: Prettier
 - **Git Hooks**: Husky + lint-staged
@@ -108,6 +116,7 @@ Similar to Google Meet but with enhanced accessibility features and integrated A
 - **CI/CD**: GitHub Actions
 
 ### Hosting & Deployment
+
 - **Frontend**: Vercel
 - **Environment**: Node.js 18+
 - **Package Manager**: npm
@@ -125,6 +134,7 @@ Ensure you have the following installed:
 - **Git**: Latest version
 
 Check versions:
+
 ```bash
 node --version
 npm --version
@@ -134,12 +144,14 @@ git --version
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/IvanAusechaS/charlaton-web.git
    cd charlaton-web
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
@@ -152,13 +164,15 @@ git --version
 ### Environment Setup
 
 1. **Create environment file**
+
    ```bash
    cp .env.example .env
    ```
 
 2. **Configure environment variables**
-   
+
    Edit `.env` with your configuration:
+
    ```env
    VITE_API_URL=http://localhost:5000/api
    VITE_WS_URL=ws://localhost:5000
@@ -172,29 +186,36 @@ git --version
 ### Running the Application
 
 #### Development Mode
+
 ```bash
 npm run dev
 ```
+
 Opens at `http://localhost:3000` with hot module replacement.
 
 #### Production Build
+
 ```bash
 npm run build
 ```
+
 Generates optimized production build in `dist/` directory.
 
 #### Preview Production Build
+
 ```bash
 npm run preview
 ```
 
 #### Linting
+
 ```bash
 npm run lint          # Check for errors
 npm run lint:fix      # Auto-fix errors
 ```
 
 #### Formatting
+
 ```bash
 npm run format        # Format all files
 npm run format:check  # Check formatting
@@ -221,7 +242,8 @@ charlaton-web/
 │   ├── backlog.md
 │   ├── team_roles.md
 │   ├── tools_stack.md
-│   └── user_manual.md
+│   ├── user_manual.md
+│   └── gitflow_guide.md    # GitFlow workflow guide
 ├── public/                  # Static assets
 │   └── vite.svg
 ├── src/                     # Source code
@@ -264,15 +286,41 @@ charlaton-web/
 
 ## 💻 Development Workflow
 
-### Branching Strategy
+### Branching Strategy (GitFlow)
 
-We follow **GitHub Flow**:
+We follow **GitFlow** methodology:
 
-- `main` - Production-ready code
-- `develop` - Integration branch
-- `feature/*` - New features
-- `fix/*` - Bug fixes
-- `hotfix/*` - Urgent production fixes
+#### Main Branches:
+
+- **`main`** - Production-ready code (protected)
+- **`develop`** - Integration branch for features (protected)
+
+#### Supporting Branches:
+
+- **`feature/*`** - New features (branch from `develop`)
+- **`release/*`** - Release preparation (branch from `develop`)
+- **`hotfix/*`** - Urgent production fixes (branch from `main`)
+
+#### Quick Start:
+
+```bash
+# Start new feature
+git checkout develop
+git pull origin develop
+git checkout -b feature/my-feature
+
+# Finish feature (via PR to develop)
+git push -u origin feature/my-feature
+# Create PR on GitHub
+
+# Start release
+git checkout -b release/1.0.0 develop
+
+# Hotfix
+git checkout -b hotfix/critical-fix main
+```
+
+📖 **Full GitFlow Guide**: See [docs/gitflow_guide.md](docs/gitflow_guide.md) for complete workflow documentation.
 
 ### Commit Convention
 
@@ -287,6 +335,7 @@ We use **Conventional Commits**:
 ```
 
 **Types**:
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation changes
@@ -299,6 +348,7 @@ We use **Conventional Commits**:
 - `chore`: Maintenance tasks
 
 **Examples**:
+
 ```bash
 feat(auth): add login functionality
 fix(meeting): resolve video stream connection issue
@@ -319,7 +369,9 @@ Before every commit, the following checks run automatically via Husky:
 ### GitHub Actions Workflows
 
 #### CI Workflow (`ci.yml`)
+
 Runs on push/PR to `main` or `develop`:
+
 - ✅ Install dependencies
 - ✅ Run ESLint
 - ✅ Check code formatting
@@ -328,7 +380,9 @@ Runs on push/PR to `main` or `develop`:
 - ✅ Upload build artifacts
 
 #### Lint Workflow (`lint.yml`)
+
 Runs on pull requests:
+
 - ✅ ESLint validation
 - ✅ Prettier formatting check
 - ✅ Commit message validation
@@ -336,9 +390,17 @@ Runs on pull requests:
 ### Deployment
 
 **Vercel Deployment** (Automatic):
-- `main` branch → Production
-- `develop` branch → Preview
-- Feature branches → Preview deployments
+
+- `main` branch → Production environment
+- `develop` branch → Staging/Preview environment
+- `feature/*` branches → Preview deployments
+- Pull requests → Preview deployments with comments
+
+**Deployment Workflow**:
+
+1. Feature merged to `develop` → Staging deployment
+2. Release branch merged to `main` → Production deployment
+3. Hotfix merged to `main` → Immediate production deployment
 
 ---
 
@@ -351,6 +413,7 @@ Comprehensive documentation available in the `/docs` directory:
 - **[Team Roles](docs/team_roles.md)** - Team structure and responsibilities
 - **[Technology Stack](docs/tools_stack.md)** - Detailed tech stack documentation
 - **[User Manual](docs/user_manual.md)** - End-user documentation
+- **[GitFlow Guide](docs/gitflow_guide.md)** - Complete GitFlow workflow guide
 
 ---
 
@@ -369,11 +432,13 @@ We welcome contributions! Please follow these steps:
    - Update documentation
 
 4. **Commit your changes**
+
    ```bash
    git commit -m "feat: add new feature"
    ```
 
 5. **Push to your fork**
+
    ```bash
    git push origin feature/your-feature-name
    ```
