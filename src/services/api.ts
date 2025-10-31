@@ -75,11 +75,7 @@ async function apiRequest<T>(endpoint: string, config: RequestConfig): Promise<T
     const data: ApiResponse<T> = await response.json()
 
     if (!response.ok) {
-      throw new ApiError(
-        data.message || 'Request failed',
-        response.status,
-        data.errors
-      )
+      throw new ApiError(data.message || 'Request failed', response.status, data.errors)
     }
 
     return data.data

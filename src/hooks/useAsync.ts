@@ -15,9 +15,7 @@ interface AsyncState<T> {
  * @param {Function} asyncFunction - Async function to execute
  * @returns {Object} Async state and execution function
  */
-export const useAsync = <T,>(
-  asyncFunction: (...args: unknown[]) => Promise<T>
-) => {
+export const useAsync = <T>(asyncFunction: (...args: unknown[]) => Promise<T>) => {
   const [state, setState] = useState<AsyncState<T>>({
     data: null,
     loading: false,
