@@ -1,0 +1,23 @@
+# Code owners for the Charlatón project
+# These owners will be requested for review when someone opens a pull request
+
+# Global owners
+*                                   @IvanAusechaS
+
+# Frontend code
+/src/**                             @IvanAusechaS
+
+# Documentation
+/docs/**                            @IvanAusechaS
+*.md                                @IvanAusechaS
+
+# Configuration files
+/.github/**                         @IvanAusechaS
+*.json                              @IvanAusechaS
+*.yml                               @IvanAusechaS
+*.yaml                              @IvanAusechaS
+
+# Build and deployment
+/vite.config.ts                     @IvanAusechaS
+/tsconfig.json                      @IvanAusechaS
+/package.json                       @IvanAusechaS
